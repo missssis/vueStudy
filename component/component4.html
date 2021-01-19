@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <component :is="who"></component>
+        <button @click="changeComponent">change</button>
+    </div>
+
+    
+    <script type="text/javascript">
+        // Vue.component('ll',{
+        //     template:`<div style="color:red">我是全局的组件</div>`
+        // })
+
+        var component1  = {
+                    template:`<div style="color:red">我是组件1</div>`,
+                    }
+        var component2  = {
+        template:`<div style="color:red">我是组件2</div>`,
+        }
+        var component3  = {
+        template:`<div style="color:red">我是组件3</div>`,
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'China',
+                who:'c1'
+            },
+            components:{
+                'c1':component1,
+                'c2':component2,
+                'c3':component3
+            },
+            methods:{
+                changeComponent:function(){
+                    if(this.who === 'c1' ){
+                        this.who = 'c2'
+                    }else if(this.who === 'c2' ){
+                        this.who = 'c3'
+                    }else{
+                        this.who = 'c1'
+                    }
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

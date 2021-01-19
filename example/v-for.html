@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in items">
+                {{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="item in sortItems">
+                {{item}}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="item in students">
+                {{item}}
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="item in sortStudents">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                items:[13,11,10,50,77],
+                students:[
+                    {name:"张三",age:18},
+                    {name:"李四",age:19},
+                    {name:"王五",age:8},
+                    {name:"赵六",age:24},
+                    {name:"淘气",age:1}
+                ]
+            },
+            computed:{
+                sortItems:function(){
+                    return this.items.sort(sortNumber)
+                },
+                sortStudents:function(){
+                    // return this.students.sort(sortStudent)
+                    return sortByKey(this.students,'age')
+                }
+            }
+        });
+        function sortNumber(a,b){
+            return a-b;
+        }
+        // function sortStudent(stu1,stu2){
+        //     return stu1.age-stu2.age;
+        // }
+
+        function sortByKey(array,key){
+            return array.sort(function(a,b){
+                var x = a[key];
+                var y = b[key];
+                return ((x<y)?-1:((x>y)?1:0));
+            })
+        }
+    </script>
+</body>
+</html>

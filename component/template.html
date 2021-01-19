@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        
+        <!-- 2.写在template标签里面的模板 -->
+        <!-- <template id="tem">
+            <h2 style="color: red;">template模板</h2>
+        </template> -->
+
+        <!-- 3.写在script标签里面的模板-->
+        <script type="x-template" id="tab1">
+            <h2 style="color: red;">template模板{{message}}</h2>
+        </script>
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'aaa'
+            },
+            // template:"#tem"
+            // template:"#tab1"
+            //直接写在vue实例的template里面，注意要用反义符号``
+            template:`<h2 style="color: red;">template模板{{message}}</h2>`
+        })
+    </script>
+</body>
+</html>

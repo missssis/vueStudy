@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- :是v-bind的缩写 -->
+        <div :class="className">bind test</div>
+        <div :class="{ClassA:isOk}">bind test</div>
+        <div :class="[ClassA,ClassB]">bind test</div>
+        <div :class="isOk?ClassA:ClassB">bind test</div>
+    </div>
+    <style>
+        .ClassA{
+            color:red;
+        }
+        .ClassB{
+            font-size: 150%;
+        }
+    </style>
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                className:'ClassA',
+                ClassA:'ClassA',
+                ClassB:'ClassB',
+                isOk:false
+            }
+        })
+    </script>
+</body>
+</html>

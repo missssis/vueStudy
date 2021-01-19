@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>{{num}}</p>
+        <button @click="add(3,$event)">+</button>
+
+        
+            <!-- <ll @click.native="add(3)">+</ll> -->
+            <btn @click.native="add(3)"></btn>
+        
+    </div>
+    <button onclick="app.add(3)">+</button>
+    
+    <script type="text/javascript">
+        // Vue.component('ll',{
+        //     template:`<div style="color:red">我是全局的组件</div>`
+        // })
+
+        var btn = {
+            template:`<button>ADD</button>`
+        }
+
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:1
+            },
+            methods:{
+                add:function(num,event){
+                    console.log(event)
+                    this.num+=num;
+                }
+            },
+            components:{
+                btn:btn
+            },
+            watch:{
+                wendu:{
+                    wendu:function(newVal,oldVal){
+                        console.log(newVal)
+                        console.log(oldVal)
+                        if(newVal > 37){
+                            console.log('高温')
+                        }else if(0 < newVal && newVal <= 37){
+                            console.log("hai ok")
+                        }else{
+                            console.log("冷")
+                        }
+                    }
+                }
+            }
+        })
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <p>原始文本信息：{{message}}</p>
+        <h3>文本框</h3>
+        <p>v-model</p><input type="text" v-model="message"/>
+        <p>v-model:lazy</p><input type="text" v-model.lazy="message"/>
+        <p>v-model:number</p><input type="text" v-model.number="message"/>
+        <p>v-model:trim</p><input type="text" v-model.trim="message"/>
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'asdf'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ll></ll>
+        <panda></panda>
+        <p>asdfasdf</p>
+    </div>
+    <div id="app1">
+        <ll></ll>
+        <panda></panda>
+        <p>asdfasdf</p>
+    </div>
+    
+    <script type="text/javascript">
+        Vue.component('ll',{
+            template:`<div style="color:red">我是全局的组件</div>`
+        })
+        var app = new Vue({
+            el:'#app',
+            data:{
+            },
+            components:{
+                "panda":{
+                    template:`<div style="color:red">我是局部的组件</div>`
+                }
+            }
+        })
+        var app1 = new Vue({
+            el:'#app1',
+            data:{
+            },
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div v-for="item in names" >
+            <!-- <input value="${item}"/> -->
+            <input type="checkbox" id={{item}}  value={{item}} v-model="values" />
+            <!-- <label for="isTrue">{{item}}</label> -->
+            <!-- <input type="checkbox" id="isTrue"  value="panda" v-model="values" />
+            <label for="isTrue">panda</label>
+            <input type="checkbox" id="isTrue" value="potato" v-model="values" />
+            <label for="isTrue">potato</label> -->
+        </div>
+        <p>{{values}}</p>
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                names:['lz','ls','lw','lo'],
+                values:[],
+                isTure:false
+            },
+            methods:{
+                change:function(){
+                    console.log(this.names)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

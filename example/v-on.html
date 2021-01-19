@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        本场得分：{{num}}<br>
+        <button  v-on:click="addTest">加分</button>
+        <input type="button"  @click="decTest" value="减分"><br>
+        <input type="text" @keyup.enter="onEnter" v-model.number="num2">
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+                num:18,
+                num2:1
+            },
+            methods:{
+                addTest:function(){
+                    this.num++;
+                },
+                decTest:function(){
+                    this.num--;
+                },
+                onEnter:function(){
+                    this.num = this.num+parseInt(this.num2)
+                }
+            }
+        })
+        
+    </script>
+</body>
+</html>

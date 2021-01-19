@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <!-- @click绑定的事件是vue实例里面methods里面的 onclick绑定的javasc里面function-->
+    <div id="app">
+        <!-- <div v-lw="color">lw</div> -->
+        <div v-ll="color">{{num}}</div>
+        <button @click="add()">ADD</button>
+        <button onclick="unbind()">销毁</button>
+    </div>
+    
+    <script type="text/javascript">
+        // Vue.directive("lw",function(el,binding,vnode){
+        //     console.log(el)
+        //     console.log(binding)
+        //     console.log(binding.name)
+        //     console.log(binding.value)
+        //     console.log(binding.expression)
+        //     console.log(vnode)
+        //     el.style="color:"+binding.value;
+        // })
+        function unbind(){
+            app.$destroy();
+        }
+        Vue.directive("ll",{
+            bind:function(el,binding,vnode){
+                console.log("1 - bind")
+                el.style="color:"+binding.value
+            },
+            inserted:function(el,binding,vnode){
+                console.log('2 - inserted')
+            },
+            update: function(){
+                console.log('3 - update')
+            },
+            componentUpdated:function(){
+                console.log('4 - component')
+            },
+            unbind:function(){//解绑
+                console.log('5 - 解绑')
+            }
+        })
+        //创建一个vue实例
+        var app = new Vue({
+            el:'#app',
+            data:{
+                color:"green",
+                num:10,
+                fontSize:'100px'
+            },
+            methods:{
+                add:function(){
+                    this.num++
+                }
+            }
+        })
+    </script>
+</body>
+</html>

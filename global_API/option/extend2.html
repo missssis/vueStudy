@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <akl></akl>
+        
+        <!-- <div id="web"></div> -->
+    </div>
+    
+    <script type="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+            }
+        })
+
+        var webExtend = Vue.extend({
+            template:  "<p><a :href='webURL'>{{webName}}--{{a}}=={{b}}</a></p>",
+            data:function(){
+                return {
+                    webURL : 'https://cn.vuejs.org/v2/guide/render-function.html',
+                    webName: 'vue网页'
+                }
+            },
+            props:['a','b'],
+
+            
+        })
+        // new webExtend({propsData:{a:12,'b':"三笠"}}).$mount('#web');
+        new webExtend({propsData:{a:12,'b':"三笠"}}).$mount('akl');
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="/assert/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- <ll></ll> -->
+        <panda :from-here="message"></panda>
+        <p>asdfasdf</p>
+    </div>
+
+    
+    <script type="text/javascript">
+        // Vue.component('ll',{
+        //     template:`<div style="color:red">我是全局的组件</div>`
+        // })
+        var app = new Vue({
+            el:'#app',
+            data:{
+                message:'China'
+            },
+            components:{
+                "panda":{
+                    template:`<div style="color:red">我是局部的组件i'm from {{fromHere}}<city where="sichuang"></city></div>`,
+                    props:['fromHere'],
+                    components:{
+                        "city":{
+                            template:`<div style="color:red">panda from  {{where}}</div>`,
+                            props:['where']
+                        }
+                    },
+                    // "city":{
+                    //         template:`<div style="color:red">panda from  {{where}}</div>`,
+                    //         props:['where']
+                            // }
+                    }
+            }
+        })
+        
+    </script>
+</body>
+</html>
